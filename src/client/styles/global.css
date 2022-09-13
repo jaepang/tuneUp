@@ -1,0 +1,22 @@
+@import './base/vars.css';
+@import './base/reset.css';
+
+html {
+  font-family: 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif;
+  height: 100%;
+}
+
+body {
+  font-family: 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-default);
+  height: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+#__next {
+  height: 100%;
+}
