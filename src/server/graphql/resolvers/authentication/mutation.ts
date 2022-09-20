@@ -17,8 +17,6 @@ import { generateToken } from '@server/apollo/utils'
 import prisma from '@server/prisma'
 import { sendPasswordRecoveryEmail } from './utils'
 
-const PRICE_OPTIONS: string[] = ['m3', 'm6', 'm12']
-
 export const AuthenticationMutation = extendType({
   type: 'Mutation',
   definition(t) {
@@ -27,11 +25,9 @@ export const AuthenticationMutation = extendType({
       args: {
         email: nonNull(stringArg()),
         name: nonNull(stringArg()),
-        tel: nonNull(stringArg()),
-        birthday: nonNull(arg({ type: 'DateTime' })),
         password: nonNull(stringArg()),
       },
-      resolve: async (_, { email, name, tel, birthday, password }, ctx) => {
+      resolve: async (_, { email, name, password }, ctx) => {
         try {
           const hashedPassword = await hash(password, 10)
 
