@@ -1,16 +1,4 @@
-import {
-  asNexusMethod,
-  makeSchema,
-  nonNull,
-  nullable,
-  objectType,
-  extendType,
-  list,
-  stringArg,
-  intArg,
-  booleanArg,
-  arg,
-} from 'nexus'
+import { extendType } from 'nexus'
 import prisma from '@server/prisma'
 
 export const AuthenticationQuery = extendType({
