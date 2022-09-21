@@ -1,5 +1,5 @@
 import NavBar from '@components/layout/shared/navbar'
-import classNames from 'classnames'
+import classNames from 'classnames/bind'
 import styles from '@styles/components/layout/default/Layout.module.css'
 const cx = classNames.bind(styles)
 
