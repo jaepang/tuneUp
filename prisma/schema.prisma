@@ -8,8 +8,23 @@ datasource db {
 }
 
 model User {
-  email     String  @unique
-  id        Int     @default(autoincrement()) @id
-  name      String?
-  password  String
+  email       String  @unique
+  id          Int     @default(autoincrement()) @id
+  name        String?
+  password    String
+  profileImg  String @default("")
+  school      String  @default("")
+
+  requests  ShowRequest[]
+}
+
+model ShowRequest {
+  id        Int      @default(autoincrement()) @id
+  available Boolean  @default(true)
+  clubId    Int
+  club      User     @relation(fields: [clubId], references: [id])
+  createdAt DateTime @default(now())
+  date      DateTime
+  desc      String
+  place     String
 }

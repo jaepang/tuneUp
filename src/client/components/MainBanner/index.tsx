@@ -5,13 +5,11 @@ const cx = classNames.bind(styles)
 
 export default function MainBanner() {
   return (
-    <Row>
-      <div className={cx('root')}>
-        <div className={cx('img-wrapper')}>
-          <img src="/img/banner/main-banner.png" alt="연합 공연할 팀 모여라!" />
-        </div>
-        <h1>연합 공연할 팀 모여라!</h1>
+    <div className={cx('root')}>
+      <div className={cx('img-wrapper')}>
+        <img src="/img/banner/main-banner.png" alt="연합 공연할 팀 모여라!" />
       </div>
-    </Row>
+      <h1>연합공연할 팀 모여라!</h1>
+    </div>
   )
 }
