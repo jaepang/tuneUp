@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { PATHNAME } from '@client/consts'
 
 import classNames from 'classnames/bind'
-import styles from '@styles/components/layout/shared/NavBar.module.css'
+import styles from './style/NavBar.module.css'
 const cx = classNames.bind(styles)
 const AccountMenu = dynamic(() => import('./AccountMenu'), { ssr: false })
 

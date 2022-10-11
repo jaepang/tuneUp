@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind'
-import styles from '@styles/components/layout/shared/Row.module.css'
+import styles from './style/Row.module.css'
 const cx = classNames.bind(styles)
 
 export enum ROW_TYPE {

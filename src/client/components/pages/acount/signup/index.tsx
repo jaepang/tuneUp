@@ -8,7 +8,7 @@ import { signupMutation } from '@client/shared/queries'
 import { useAccount } from '@client/hooks'
 
 import classNames from 'classnames/bind'
-import styles from '@styles/components/pages/account/Account.module.css'
+import styles from '@components/pages/acount/style/Account.module.css'
 const cx = classNames.bind(styles)
 
 export default function SignupPageComponent() {

@@ -1,8 +1,8 @@
 .content-wrapper {
   position: relative;
   width: 100%;
-  padding: 156px 0 0 0;
+  padding: 130px 0 0 0;
   @media (max-width: 1024px) {
-    padding: 98px 0 0 0;
+    padding: 81px 0 0 0;
   }
 }

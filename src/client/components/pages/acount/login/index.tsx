@@ -10,7 +10,7 @@ import { PATHNAME, REG_EXP } from '@root/src/client/consts'
 import Link from 'next/link'
 
 import classNames from 'classnames/bind'
-import styles from '@styles/components/pages/account/Account.module.css'
+import styles from '@components/pages/acount/style/Account.module.css'
 const cx = classNames.bind(styles)
 
 export default function LoginPageComponent() {

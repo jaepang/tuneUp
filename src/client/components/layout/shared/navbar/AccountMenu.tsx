@@ -5,7 +5,7 @@ import { AiOutlineHeart, AiOutlineUser } from 'react-icons/ai'
 
 import { PATHNAME } from '@client/consts'
 import classNames from 'classnames/bind'
-import styles from '@styles/components/layout/shared/NavBar.module.css'
+import styles from './style/NavBar.module.css'
 const cx = classNames.bind(styles)
 
 export default function AccountMenu() {
