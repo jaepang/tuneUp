@@ -17,7 +17,9 @@ export default function NavBar() {
       <div className={cx('content-wrapper')}>
         <div className={cx('left-area')}>
           <Link href={PATHNAME.HOME}>
-            <a>logo</a>
+            <a className={cx('logo-wrapper')}>
+              <img src="/img/logo/logo.png" alt="HOME" height={30} />
+            </a>
           </Link>
         </div>
 
