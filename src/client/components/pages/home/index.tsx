@@ -10,7 +10,6 @@ import { requestsQuery } from '@client/shared/queries'
 export default function HomePageComponent() {
   const { isLoggedIn } = useAccount()
   const { data, isLoading } = useQuery(['homeFeed'], () => requestsQuery({ skip: 0, take: 10 }))
-  console.log(data)
 
   return (
     <Layout>

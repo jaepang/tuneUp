@@ -13,13 +13,14 @@
     flex-direction: column;
     justify-content: space-between;
     border-radius: 20px;
-    border: 1px solid var(--color-light-gray-border);
     background-color: var(--color-light);
     overflow: hidden;
-    transition: all 0.2s ease-in-out;
+    box-shadow: 10px 20px 20px 0 rgb(92 95 112 / 8%);
+    transition: all 150ms;
 
     &:hover {
-      transform: translateY(-5%);
+      box-shadow: 10px 20px 30px 0 rgb(92 95 112 / 16%);
+      transform: translate3d(0, -4px, 0);
     }
 
     .header {
