@@ -10,5 +10,7 @@ export const User = objectType({
     t.string('school')
 
     t.list.field('requests', { type: 'ShowRequest' })
+    t.list.field('chatrooms', { type: 'ChatRoom' })
+    t.list.field('chats', { type: 'Chat' })
   },
 })

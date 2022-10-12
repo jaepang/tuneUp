@@ -12,10 +12,12 @@ model User {
   id          Int     @default(autoincrement()) @id
   name        String?
   password    String
-  profileImg  String @default("")
+  profileImg  String  @default("")
   school      String  @default("")
 
-  requests  ShowRequest[]
+  requests    ShowRequest[]
+  chatrooms   ChatRoom[]
+  chats       Chat[]
 }
 
 model ShowRequest {
@@ -27,4 +29,23 @@ model ShowRequest {
   date      DateTime
   desc      String
   place     String
+}
+
+model Chat {
+  id        Int      @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  message   String
+  roomId    Int
+  room      ChatRoom @relation(fields: [roomId], references: [id])
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model ChatRoom {
+  id        Int      @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+
+  users     User[]
+  chats     Chat[]
 }
