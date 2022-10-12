@@ -1,16 +1,16 @@
 /* 기본 속성 */
 :root {
   --color-primary: #f76e11;
-  --color-light: #ffffff;
+  --color-light: rgba(255, 255, 255, 0.9);
   --color-light-dimmed: #fffaf7;
   --color-dark: #1a1b1e;
   --color-dark-dimmed: #2b2c31;
-  --color-gray-dimmed: #bababa;
+  --color-gray-dimmed: #cac6c4;
   --color-light-gray-border: #ededed;
   --color-light-gray: #f8f8f8;
-  --color-red: #ff0000;
+  --color-red: #fc4f4f;
   --color-yellow: #ffce00;
-  --color-blue: #4368c5;
+  --color-blue: #277bc0;
 
   --color-text-black: rgba(0, 0, 0, 1);
   --color-text-black-dimmed: rgba(0, 0, 0, 0.4);

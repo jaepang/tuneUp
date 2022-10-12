@@ -6,5 +6,9 @@ export const User = objectType({
     t.int('id')
     t.string('email')
     t.string('name')
+    t.string('profileImg')
+    t.string('school')
+
+    t.list.field('requests', { type: 'ShowRequest' })
   },
 })
