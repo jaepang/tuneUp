@@ -51,9 +51,12 @@ export default function ChatRoom({ chatRoom, isMobile = false }) {
     target: bottomRef,
     onIntersect: handleIntersect,
     dep: chats,
+    root: document.querySelector(`.${cx('chats-wrapper')}`),
+    threshold: 0.5,
   })
 
   function handleIntersect(entries) {
+    console.log('handleIntersect', entries[0].isIntersecting)
     if (entries[0].isIntersecting) {
       if (hasNextPage && !isFetchingNextPage) {
         setTimeout(() => {
@@ -64,7 +67,7 @@ export default function ChatRoom({ chatRoom, isMobile = false }) {
   }
 
   return (
-    <div className={cx('chat-room')}>
+    <div id="chat-room" className={cx('chat-room')}>
       <div className={cx('header')}>
         {isMobile && (
           <Link href="/chat/">

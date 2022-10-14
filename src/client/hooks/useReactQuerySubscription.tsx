@@ -25,7 +25,7 @@ export function useReactQuerySubscription(chatRoomId: number) {
   }
   useEffect(() => {
     initSocket()
-  })
+  }, [])
 
   const onSubmitHandler = () => {
     socket.emit('submit', { chatRoomId })
