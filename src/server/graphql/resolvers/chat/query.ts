@@ -20,6 +20,12 @@ export const ChatQuery = extendType({
               id: roomId,
             },
           },
+          include: {
+            user: true,
+          },
+          orderBy: {
+            createdAt: 'desc',
+          },
         })
       },
     })

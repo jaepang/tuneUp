@@ -1,8 +1,27 @@
+import { useMutation } from 'react-query'
+import { createChatMutation } from '@client/shared/queries'
+
 import classNames from 'classnames/bind'
 import styles from '@components/CardFeed/style/CardFeed.module.css'
 const cx = classNames.bind(styles)
 
 export default function CardModal({ card }) {
+  const { mutate } = useMutation(createChatMutation, {
+    onSuccess: () => {
+      console.log('success')
+    },
+    onError: () => {
+      console.log('error')
+    },
+  })
+
+  function handleCreateChat() {
+    mutate({
+      toUserId: card?.club?.id,
+      message: 'hello',
+    })
+  }
+
   return (
     <div className={cx('modal')}>
       <div className={cx('header')}>
@@ -17,7 +36,7 @@ export default function CardModal({ card }) {
       </div>
       <div className={cx('description')}>{card?.desc}</div>
       <div className={cx('footer')}>
-        <button>연락 시작하기</button>
+        <button onClick={handleCreateChat}>연락 시작하기</button>
       </div>
     </div>
   )

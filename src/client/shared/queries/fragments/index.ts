@@ -24,3 +24,19 @@ export const USER_FRAGMENT = `
     ${SHOWREQUEST_FRAGMENT}
   }
 `
+
+export const CHAT_FRAGMENT = `
+  id
+  message
+  createdAt
+  user {
+    ${USER_FRAGMENT}
+  }
+`
+
+export const CHATROOM_FRAGMENT = `
+  id
+  users {
+    ${USER_FRAGMENT}
+  }
+`

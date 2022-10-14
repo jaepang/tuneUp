@@ -1,4 +1,4 @@
-import { ShowRequestMutation } from './mutation'
-import { ShowRequestQuery } from './query'
+import { ChatMutation } from './mutation'
+import { ChatQuery } from './query'
 
-export { ShowRequestMutation, ShowRequestQuery }
+export { ChatMutation, ChatQuery }

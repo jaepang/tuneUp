@@ -1,6 +1,6 @@
 export const PATHNAME = {
   HOME: '/',
-  DIRECT: '/direct',
+  CHAT: '/chat',
   MY: '/my',
   LOGIN: '/login',
   SIGNUP: './signup',

@@ -39,6 +39,8 @@ model Chat {
   room      ChatRoom @relation(fields: [roomId], references: [id])
   userId    Int
   user      User     @relation(fields: [userId], references: [id])
+
+  @@index([roomId, createdAt(sort: Desc)])
 }
 
 model ChatRoom {

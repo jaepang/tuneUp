@@ -19,7 +19,7 @@ export default function AccountMenu() {
     <div className={cx('right-area')}>
       {isLoggedIn && !isMeLoading && (
         <>
-          <Link href={PATHNAME.DIRECT}>
+          <Link href={PATHNAME.CHAT}>
             <div className={cx('icon-wrapper')}>
               <IoChatbubblesOutline size={25} />
             </div>

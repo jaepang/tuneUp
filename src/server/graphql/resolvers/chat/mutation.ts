@@ -22,20 +22,33 @@ export const ChatMutation = extendType({
     t.field('createChat', {
       type: 'Chat',
       args: {
-        toUserId: intArg(),
-        roomId: intArg(),
+        toUserId: nonNull(intArg()),
         message: nonNull(stringArg()),
       },
-      resolve: async (_, { toUserId, roomId, message }, ctx) => {
-        // chatroom already exists
-        if (roomId) {
+      resolve: async (_, { toUserId, message }, ctx) => {
+        // check if chatroom already exists
+        const room = await prisma.chatRoom.findFirst({
+          where: {
+            users: {
+              every: {
+                id: {
+                  in: [ctx.userId, toUserId],
+                },
+              },
+            },
+          },
+          select: {
+            id: true,
+          },
+        })
+        if (room) {
           try {
             return await prisma.chat.create({
               data: {
                 message,
                 room: {
                   connect: {
-                    id: roomId,
+                    id: room.id,
                   },
                 },
                 user: {
