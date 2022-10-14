@@ -37,19 +37,22 @@ export default function WriteChat({ oppositeUser, onSubmitHandler }) {
   function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
-      mutate({
-        toUserId: oppositeUser?.id,
-        message,
-      })
+      submit()
     }
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    mutate({
-      toUserId: oppositeUser?.id,
-      message,
-    })
+    submit()
+  }
+
+  function submit() {
+    if (message.length > 0) {
+      mutate({
+        toUserId: oppositeUser?.id,
+        message,
+      })
+    }
   }
 
   return (
@@ -58,7 +61,7 @@ export default function WriteChat({ oppositeUser, onSubmitHandler }) {
         value={message}
         rows={textareaRows}
         className={cx('textarea', {
-          rows5: textareaRows === 5,
+          scroll: textareaRows === 5,
         })}
         onChange={handleOnChange}
         onKeyDown={handleKeyDown}

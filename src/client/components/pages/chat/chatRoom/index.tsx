@@ -1,4 +1,6 @@
+import Link from 'next/link'
 import WriteChat from './writeChat'
+import { BsChevronLeft } from 'react-icons/bs'
 
 import { useAccount, useReactQuerySubscription } from '@client/hooks'
 import { useInfiniteQuery, useQuery } from 'react-query'
@@ -8,7 +10,7 @@ import classNames from 'classnames/bind'
 import styles from '@components/pages/chat/style/Chat.module.css'
 const cx = classNames.bind(styles)
 
-export default function ChatRoom({ chatRoom }) {
+export default function ChatRoom({ chatRoom, isMobile = false }) {
   const { me } = useAccount()
   const chatRoomId = chatRoom?.id
   const oppositeUser = chatRoom?.users?.find(user => user.id !== me?.id)
@@ -23,6 +25,13 @@ export default function ChatRoom({ chatRoom }) {
   return (
     <div className={cx('chat-room')}>
       <div className={cx('header')}>
+        {isMobile && (
+          <Link href="/chat/">
+            <button className={cx('back-button')}>
+              <BsChevronLeft size={20} />
+            </button>
+          </Link>
+        )}
         <div className={cx('profile-img-wrapper')}>
           <img className={cx('profile-img')} src={oppositeUser?.profileImg} />
         </div>
@@ -30,7 +39,7 @@ export default function ChatRoom({ chatRoom }) {
       </div>
       {!chatsLoading && chats?.length > 0 && (
         <div className={cx('chats-wrapper')}>
-          <div className={cx('dummy')} />
+          <div className={cx('padding')} />
           {chats?.map(chat => (
             <div key={chat.id} className={cx('chat')}>
               <div
@@ -41,7 +50,7 @@ export default function ChatRoom({ chatRoom }) {
               </div>
             </div>
           ))}
-          <div className={cx('dummy')} />
+          <div className={cx('padding', 'bottom')} />
         </div>
       )}
       <WriteChat {...{ oppositeUser, onSubmitHandler }} />

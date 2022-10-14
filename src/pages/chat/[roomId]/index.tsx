@@ -5,7 +5,7 @@ import ChatRoomsComponent from '@components/pages/chat'
 
 export default function ChatRoomsPage() {
   return (
-    <Layout>
+    <Layout shouldHideNavBarOnMobile>
       <Row type={ROW_TYPE.FULL_SCREEN}>
         <ChatRoomsComponent />
       </Row>
