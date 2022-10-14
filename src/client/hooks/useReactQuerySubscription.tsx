@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import io from 'Socket.IO-client'
+import io from 'socket.io-client'
 import { queryClient } from '@client/shared/react-query'
 
 export function useReactQuerySubscription(chatRoomId: number) {
