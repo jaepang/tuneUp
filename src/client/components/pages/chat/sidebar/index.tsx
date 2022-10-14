@@ -18,7 +18,7 @@ export default function Sidebar({ chatRoomsLoading, chatRooms }) {
       {!chatRoomsLoading && chatRooms?.length > 0 && (
         <>
           {chatRooms?.map(chatRoom => {
-            const opositeUser = chatRoom.users.find(user => user.id !== me?.id)
+            const oppositeUser = chatRoom.users.find(user => user.id !== me?.id)
             return (
               <div
                 key={chatRoom.id}
@@ -27,9 +27,9 @@ export default function Sidebar({ chatRoomsLoading, chatRooms }) {
                 })}
                 onClick={() => router.push(`/chat/${chatRoom.id}`)}>
                 <div className={cx('profile-img-wrapper')}>
-                  <img className={cx('profile-img')} src={opositeUser?.profileImg} />
+                  <img className={cx('profile-img')} src={oppositeUser?.profileImg} />
                 </div>
-                <div className={cx('username')}>{opositeUser?.name}</div>
+                <div className={cx('username')}>{oppositeUser?.name}</div>
               </div>
             )
           })}

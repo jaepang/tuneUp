@@ -22,8 +22,15 @@ export default function ChatRoom({ chatRoom }) {
 
   return (
     <div className={cx('chat-room')}>
+      <div className={cx('header')}>
+        <div className={cx('profile-img-wrapper')}>
+          <img className={cx('profile-img')} src={oppositeUser?.profileImg} />
+        </div>
+        <div className={cx('username')}>{oppositeUser?.name}</div>
+      </div>
       {!chatsLoading && chats?.length > 0 && (
         <div className={cx('chats-wrapper')}>
+          <div className={cx('dummy')} />
           {chats?.map(chat => (
             <div key={chat.id} className={cx('chat')}>
               <div
@@ -34,6 +41,7 @@ export default function ChatRoom({ chatRoom }) {
               </div>
             </div>
           ))}
+          <div className={cx('dummy')} />
         </div>
       )}
       <WriteChat {...{ oppositeUser, onSubmitHandler }} />

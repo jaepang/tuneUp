@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useMutation } from 'react-query'
 import { createChatMutation } from '@client/shared/queries'
 import { queryClient } from '@client/shared/react-query'
@@ -12,6 +12,8 @@ export default function WriteChat({ oppositeUser, onSubmitHandler }) {
   const router = useRouter()
   const chatRoomId = parseInt(router.query.roomId as string)
   const [message, setMessage] = useState('')
+  const [textareaRows, setTextareaRows] = useState(1)
+
   const { mutate } = useMutation(createChatMutation, {
     onSuccess: () => {
       setMessage('')
@@ -25,8 +27,20 @@ export default function WriteChat({ oppositeUser, onSubmitHandler }) {
     },
   })
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
+  function handleOnChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    const { value } = e.target
+    setMessage(value)
+    setTextareaRows(Math.min(value.split('\n').length, 5))
+  }
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      submit()
+    }
+  }
+
+  function submit() {
     mutate({
       toUserId: oppositeUser?.id,
       message,
@@ -34,17 +48,24 @@ export default function WriteChat({ oppositeUser, onSubmitHandler }) {
     setMessage('')
   }
 
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    submit()
+  }
+
   return (
-    <div className={cx('write-chat')}>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={message}
-          onChange={e => setMessage(e.target.value)}
-          placeholder="메시지를 입력하세요"
-        />
-        <button type="submit">전송</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className={cx('write-chat', { 'over-five-rows': textareaRows >= 5 })}>
+      <textarea
+        value={message}
+        rows={textareaRows}
+        className={cx('textarea', {
+          rows5: textareaRows === 5,
+        })}
+        onChange={handleOnChange}
+        onKeyDown={handleKeyDown}
+        placeholder="메시지를 입력하세요"
+      />
+      {message.length > 0 && <button type="submit">전송</button>}
+    </form>
   )
 }
