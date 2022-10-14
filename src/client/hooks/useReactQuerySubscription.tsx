@@ -6,7 +6,9 @@ export function useReactQuerySubscription(chatRoomId: number) {
   let socket
   async function initSocket() {
     await fetch('/api/websocket')
-    socket = io()
+    socket = io({
+      transports: ['websocket'],
+    })
 
     socket.on('connect', () => {
       console.log('connected')
