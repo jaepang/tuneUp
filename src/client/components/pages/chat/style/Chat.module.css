@@ -137,13 +137,6 @@
         left: 0;
         bottom: 0;
 
-        /* hide scroll bar 
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        &::-webkit-scrollbar {
-          display: none;
-        } */
-
         .dummy {
           width: 100%;
           min-height: 120px;
@@ -164,6 +157,7 @@
 
             .message {
               width: max-content;
+              white-space: pre-wrap;
               padding: 10px;
               background: var(--color-primary-dimmed);
               border-radius: 10px;

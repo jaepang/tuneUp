@@ -17,6 +17,7 @@ export default function WriteChat({ oppositeUser, onSubmitHandler }) {
   const { mutate } = useMutation(createChatMutation, {
     onSuccess: () => {
       setMessage('')
+      setTextareaRows(1)
       if (chatRoomId) {
         onSubmitHandler()
         queryClient.invalidateQueries(['chats', { roomId: chatRoomId }])
@@ -36,21 +37,19 @@ export default function WriteChat({ oppositeUser, onSubmitHandler }) {
   function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
-      submit()
+      mutate({
+        toUserId: oppositeUser?.id,
+        message,
+      })
     }
-  }
-
-  function submit() {
-    mutate({
-      toUserId: oppositeUser?.id,
-      message,
-    })
-    setMessage('')
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    submit()
+    mutate({
+      toUserId: oppositeUser?.id,
+      message,
+    })
   }
 
   return (

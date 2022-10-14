@@ -11,7 +11,7 @@ const cx = classNames.bind(styles)
 export default function ChatRoom({ chatRoom }) {
   const { me } = useAccount()
   const chatRoomId = chatRoom?.id
-  const oppositeUser = chatRoom?.users.find(user => user.id !== me?.id)
+  const oppositeUser = chatRoom?.users?.find(user => user.id !== me?.id)
   const { onSubmitHandler } = useReactQuerySubscription(chatRoomId)
 
   const { data: chatsData, isLoading: chatsLoading } = useQuery(['chats', { roomId: chatRoomId }], chatsQuery, {
