@@ -2,8 +2,9 @@ import { NexusGenArgTypes, NexusGenObjects } from '@shared/generated/nexus-typeg
 import { graphQLClient } from '@client/utils'
 import { CHATS_QUERY, CREATE_CHAT_MUTATION } from './tags'
 
-export const chatsQuery = async ({ queryKey }): Promise<{ chats: NexusGenObjects['Chat'][] }> => {
-  const [_, variables] = queryKey
+export const chatsQuery = async (
+  variables: NexusGenArgTypes['Query']['chats'],
+): Promise<{ chats: NexusGenObjects['Chat'][] }> => {
   return await graphQLClient.request(CHATS_QUERY, variables)
 }
 

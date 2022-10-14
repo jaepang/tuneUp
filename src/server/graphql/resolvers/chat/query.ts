@@ -9,12 +9,14 @@ export const ChatQuery = extendType({
       args: {
         skip: intArg(),
         take: intArg(),
+        cursorId: intArg(),
         roomId: nonNull(intArg()),
       },
-      resolve: (_, { skip, take, roomId }, ctx) => {
+      resolve: (_, { skip, take, cursorId, roomId }, ctx) => {
         return prisma.chat.findMany({
           skip,
           take,
+          cursor: cursorId ? { id: cursorId } : undefined,
           where: {
             room: {
               id: roomId,

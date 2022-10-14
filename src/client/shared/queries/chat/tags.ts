@@ -2,8 +2,8 @@ import gql from 'graphql-tag'
 import { CHAT_FRAGMENT } from '@client/shared/queries'
 
 export const CHATS_QUERY = gql`
-  query ($skip: Int, $take: Int, $roomId: Int!) {
-    chats(skip: $skip, take: $take, roomId: $roomId) {
+  query ($skip: Int, $take: Int, $cursorId: Int, $roomId: Int!) {
+    chats(skip: $skip, take: $take, cursorId: $cursorId, roomId: $roomId) {
       ${CHAT_FRAGMENT}
     }
   }
