@@ -11,10 +11,10 @@ export default function HomePageComponent() {
   const { isLoggedIn } = useAccount()
   const { data, isLoading } = useQuery(['homeFeed'], () => requestsQuery({ skip: 0, take: 10 }))
   const { width } = useWindowSize()
-  const isMobile = width <= 1024
+  const isTablet = width <= 1024
 
   const rowStyle = {
-    marginTop: isMobile ? '64px' : '130px',
+    marginTop: isTablet ? '64px' : '130px',
   }
 
   return (

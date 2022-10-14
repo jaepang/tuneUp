@@ -6,8 +6,8 @@ const cx = classNames.bind(styles)
 
 export default function MainBanner() {
   const windowSize = useWindowSize()
-  const isMobile = windowSize.width <= 1024
-  const src = isMobile ? '/img/banner/mobile-banner.png' : '/img/banner/main-banner.png'
+  const isTablet = windowSize.width <= 1024
+  const src = isTablet ? '/img/banner/mobile-banner.png' : '/img/banner/main-banner.png'
 
   return (
     <div className={cx('root')}>

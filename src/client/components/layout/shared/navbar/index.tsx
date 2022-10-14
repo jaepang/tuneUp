@@ -10,7 +10,7 @@ const AccountMenu = dynamic(() => import('./AccountMenu'), { ssr: false })
 
 export default function NavBar() {
   const windowSize = useWindowSize()
-  const isMobile = windowSize.width <= 1024
+  const isMobile = windowSize.width <= 767
 
   return (
     <div className={cx('navbar')}>
