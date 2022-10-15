@@ -1,12 +1,11 @@
 import { useEffect } from 'react'
-import io from 'socket.io-client'
+import io, { Socket } from 'socket.io-client'
 import { queryClient } from '@client/shared/react-query'
 
 export function useReactQuerySubscription(chatRoomId: number) {
-  let socket
+  let socket: Socket
   async function initSocket() {
-    await fetch('/api/websocket')
-    socket = io({
+    socket = io('http://localhost:8080', {
       transports: ['websocket'],
     })
 
@@ -25,9 +24,10 @@ export function useReactQuerySubscription(chatRoomId: number) {
       }
     })
   }
+
   useEffect(() => {
     initSocket()
-  }, [])
+  })
 
   const onSubmitHandler = () => {
     socket.emit('submit', { chatRoomId })
