@@ -5,7 +5,8 @@ import { queryClient } from '@client/shared/react-query'
 export function useReactQuerySubscription(chatRoomId: number) {
   let socket: Socket
   async function initSocket() {
-    socket = io('http://localhost:8080', {
+    await fetch('/api/websocket')
+    socket = io({
       transports: ['websocket'],
     })
 
