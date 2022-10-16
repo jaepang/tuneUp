@@ -23,6 +23,26 @@ export const ChatRoomQuery = extendType({
           },
           include: {
             users: true,
+            chats: {
+              where: {
+                AND: [
+                  {
+                    user: {
+                      id: {
+                        not: ctx.userId,
+                      },
+                    },
+                  },
+                  {
+                    read: false,
+                  },
+                ],
+              },
+              select: {
+                id: true,
+                read: true,
+              },
+            },
           },
         })
       },

@@ -31,5 +31,34 @@ export const ChatQuery = extendType({
         })
       },
     })
+
+    t.int('unreadChatsCount', {
+      args: {
+        roomId: nonNull(intArg()),
+      },
+      resolve: (_, { roomId }, ctx) => {
+        return prisma.chat.count({
+          where: {
+            AND: [
+              {
+                room: {
+                  id: roomId,
+                },
+              },
+              {
+                user: {
+                  id: {
+                    not: ctx.userId,
+                  },
+                },
+              },
+              {
+                read: false,
+              },
+            ],
+          },
+        })
+      },
+    })
   },
 })

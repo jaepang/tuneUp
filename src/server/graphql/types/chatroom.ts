@@ -8,6 +8,6 @@ export const ChatRoom = objectType({
     t.date('updatedAt')
 
     t.list.field('users', { type: 'User' })
-    t.list.field('chats', { type: 'ChatRoom' })
+    t.list.field('chats', { type: 'Chat' })
   },
 })

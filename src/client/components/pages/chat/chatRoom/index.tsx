@@ -2,10 +2,11 @@ import Link from 'next/link'
 import WriteChat from './writeChat'
 import { BsChevronLeft } from 'react-icons/bs'
 
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useAccount, useObserver, useReactQuerySubscription } from '@client/hooks'
-import { useInfiniteQuery } from 'react-query'
-import { chatsQuery } from '@client/shared/queries'
+import { useInfiniteQuery, useMutation } from 'react-query'
+import { chatsQuery, readChatsMutation } from '@client/shared/queries'
+import { queryClient } from '@client/shared/react-query'
 
 import classNames from 'classnames/bind'
 import styles from '@components/pages/chat/style/Chat.module.css'
@@ -46,6 +47,22 @@ export default function ChatRoom({ chatRoom, isMobile = false }) {
   )
   const { pages } = chatsData ?? {}
   const chats = pages?.reduce((acc, page) => [...acc, ...page.chats], [])
+
+  const { mutate: readChats } = useMutation(readChatsMutation, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(['chats', { roomId: chatRoomId }])
+      queryClient.refetchQueries('chatRooms')
+    },
+  })
+
+  let unreadChatIDs = chats?.filter(chat => chat.user.id !== me?.id && !chat.read).map(chat => chat.id)
+  useEffect(() => {
+    unreadChatIDs?.length > 0 && readChats({ chatIDs: unreadChatIDs })
+    unreadChatIDs?.forEach(chatId => {
+      chats.find(chat => chat.id === chatId).read = true
+    })
+    unreadChatIDs = []
+  }, [unreadChatIDs])
 
   useObserver({
     target: bottomRef,

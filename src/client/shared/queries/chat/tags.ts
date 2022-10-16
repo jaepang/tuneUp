@@ -16,3 +16,9 @@ export const CREATE_CHAT_MUTATION = gql`
     }
   }
 `
+
+export const READ_CHATS_MUTATION = gql`
+  mutation ($chatIDs: [Int]) {
+    readChat(chatIDs: $chatIDs)
+  }
+`

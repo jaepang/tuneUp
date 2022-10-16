@@ -27,8 +27,9 @@ export const USER_FRAGMENT = `
 
 export const CHAT_FRAGMENT = `
   id
-  message
   createdAt
+  message
+  read
   user {
     ${USER_FRAGMENT}
   }
@@ -38,5 +39,9 @@ export const CHATROOM_FRAGMENT = `
   id
   users {
     ${USER_FRAGMENT}
+  }
+  chats {
+    id
+    read
   }
 `

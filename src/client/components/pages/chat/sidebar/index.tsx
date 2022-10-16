@@ -32,16 +32,19 @@ export default function Sidebar({ chatRoomsLoading, chatRooms }) {
         <>
           {chatRooms?.map(chatRoom => {
             const oppositeUser = chatRoom.users.find(user => user.id !== me?.id)
+            const unread = chatRoom.chats.length > 0
             return (
               <Link key={chatRoom.id} href={`/chat/${chatRoom.id}`}>
                 <div
                   className={cx('section', {
                     active: chatRoom.id === chatRoomId,
+                    unread,
                   })}>
                   <div className={cx('profile-img-wrapper')}>
                     <img className={cx('profile-img')} src={oppositeUser?.profileImg} />
                   </div>
                   <div className={cx('username')}>{oppositeUser?.name}</div>
+                  {unread && <div className={cx('unread-dot')} />}
                 </div>
               </Link>
             )

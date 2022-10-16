@@ -71,12 +71,18 @@
         column-gap: 10px;
         border-bottom: 1px solid var(--color-light-gray-border);
         color: var(--color-text-black-dimmed);
+        position: relative;
         cursor: pointer;
 
         &.active,
         &:hover {
           background: var(--color-light-dimmed);
           color: var(--color-text-black);
+        }
+
+        &.unread {
+          color: var(--color-text-black);
+          font-weight: 700;
         }
 
         .profile-img-wrapper {
@@ -101,6 +107,17 @@
         .username {
           font-size: 17px;
           font-weight: 500;
+        }
+
+        .unread-dot {
+          min-width: 10px;
+          min-height: 10px;
+          position: absolute;
+          top: 50%;
+          right: 20px;
+          transform: translateY(-50%);
+          border-radius: 50%;
+          background: var(--color-primary);
         }
       }
     }

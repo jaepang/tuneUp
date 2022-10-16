@@ -14,6 +14,13 @@ export const ShowRequestQuery = extendType({
         return prisma.showRequest.findMany({
           skip,
           take,
+          where: {
+            NOT: {
+              club: {
+                id: ctx.userId,
+              },
+            },
+          },
           include: {
             club: true,
           },

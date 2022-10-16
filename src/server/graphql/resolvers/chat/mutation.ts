@@ -100,5 +100,29 @@ export const ChatMutation = extendType({
         }
       },
     })
+
+    t.int('readChat', {
+      args: {
+        chatIDs: list(intArg()),
+      },
+      resolve: async (_, { chatIDs }, ctx) => {
+        try {
+          const res = await prisma.chat.updateMany({
+            where: {
+              id: {
+                in: chatIDs,
+              },
+            },
+            data: {
+              read: true,
+            },
+          })
+          if (res.count < chatIDs.length) throw new ApolloError('DUPLICATED_CERTIFICATION')
+          return res.count
+        } catch (error) {
+          throw new ApolloError(error)
+        }
+      },
+    })
   },
 })
