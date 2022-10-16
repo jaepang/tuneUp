@@ -19,8 +19,8 @@ export default function WriteChat({ oppositeUser, onSubmitHandler }) {
       setMessage('')
       setTextareaRows(1)
       if (chatRoomId) {
-        onSubmitHandler()
         queryClient.invalidateQueries(['chats', { roomId: chatRoomId }])
+        onSubmitHandler()
       }
     },
     onError: () => {

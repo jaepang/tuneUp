@@ -12,6 +12,8 @@ export default function HomePageComponent() {
   const { data, isLoading } = useQuery(['homeFeed'], () => requestsQuery({ skip: 0, take: 10 }))
   const { width } = useWindowSize()
   const isTablet = width <= 1024
+  console.log('isMeLoading', isMeLoading)
+  console.log('isLoggedIn', isLoggedIn)
 
   const rowStyle = {
     marginTop: isTablet ? '84px' : '130px',
@@ -19,7 +21,7 @@ export default function HomePageComponent() {
 
   return (
     <Row style={rowStyle}>
-      {!isMeLoading && !isLoggedIn && <MainBanner />}
+      <MainBanner />
       <h1>지금 공연하고 싶은 동아리</h1>
       {!isLoading && <CardFeed {...{ data: data?.requestFeed }} />}
     </Row>

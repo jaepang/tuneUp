@@ -8,3 +8,11 @@ export const CHATROOMS_QUERY = gql`
     }
   }
 `
+
+export const CREATE_CHATROOM_MUTATION = gql`
+  mutation Mutation($toUserId: Int!) {
+    createChatRoom(toUserId: $toUserId) {
+      id
+    }
+  }
+`

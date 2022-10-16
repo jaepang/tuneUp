@@ -1,25 +1,31 @@
+import { useRouter } from 'next/router'
+import { useAccount } from '@client/hooks'
 import { useMutation } from 'react-query'
-import { createChatMutation } from '@client/shared/queries'
+import { createChatRoomMutation } from '@client/shared/queries'
 
 import classNames from 'classnames/bind'
 import styles from '@components/CardFeed/style/CardFeed.module.css'
 const cx = classNames.bind(styles)
 
 export default function CardModal({ card }) {
-  const { mutate } = useMutation(createChatMutation, {
-    onSuccess: () => {
-      console.log('success')
+  const router = useRouter()
+  const { me } = useAccount()
+  const { mutate } = useMutation(createChatRoomMutation, {
+    onSuccess: data => {
+      const chatRoomId = data?.createChatRoom?.id
+      router.push(`/chat/${chatRoomId}`)
     },
     onError: () => {
-      console.log('error')
+      console.log('채팅 생성에 실패했습니다.')
     },
   })
 
   function handleCreateChat() {
-    mutate({
-      toUserId: card?.club?.id,
-      message: 'hello',
-    })
+    if (me?.id !== card?.user?.id) {
+      mutate({
+        toUserId: card?.club?.id,
+      })
+    }
   }
 
   return (

@@ -10,6 +10,7 @@ export function useReactQuerySubscription(chatRoomId: number) {
       transports: ['websocket'],
     })
 
+    /* DEBUG
     socket.on('connect', () => {
       console.log('connected')
     })
@@ -17,6 +18,7 @@ export function useReactQuerySubscription(chatRoomId: number) {
     socket.on('disconnect', () => {
       console.log('disconnected')
     })
+    */
 
     socket.on('update-chat', msg => {
       const { chatRoomId: roomId } = msg

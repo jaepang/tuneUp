@@ -56,7 +56,6 @@ export default function ChatRoom({ chatRoom, isMobile = false }) {
   })
 
   function handleIntersect(entries) {
-    console.log('handleIntersect', entries[0].isIntersecting)
     if (entries[0].isIntersecting) {
       if (hasNextPage && !isFetchingNextPage) {
         setTimeout(() => {
