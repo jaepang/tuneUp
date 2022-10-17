@@ -8,6 +8,7 @@ export const User = objectType({
     t.string('name')
     t.string('profileImg')
     t.string('school')
+    t.string('desc')
 
     t.list.field('requests', { type: 'ShowRequest' })
     t.list.field('chatrooms', { type: 'ChatRoom' })

@@ -14,6 +14,7 @@ model User {
   password    String
   profileImg  String  @default("")
   school      String  @default("")
+  desc        String?
 
   requests    ShowRequest[]
   chatrooms   ChatRoom[]
@@ -27,8 +28,9 @@ model ShowRequest {
   club      User     @relation(fields: [clubId], references: [id])
   createdAt DateTime @default(now())
   date      DateTime
-  desc      String
   place     String
+  desc      String
+  budget    Int      @default(0)
 }
 
 model Chat {
