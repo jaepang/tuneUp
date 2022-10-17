@@ -1,6 +1,9 @@
 import Link from 'next/link'
-import { BsChevronLeft } from 'react-icons/bs'
+import Modal from '@components/modal'
+import ExploreModal from './modal'
+import { BsChevronLeft, BsPencilSquare } from 'react-icons/bs'
 
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useAccount } from '@client/hooks'
 import { useWindowSize } from '@client/hooks'
@@ -13,6 +16,7 @@ export default function Sidebar({ chatRoomsLoading, chatRooms }) {
   const router = useRouter()
   const { me } = useAccount()
   const chatRoomId = parseInt(router.query.roomId as string)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const { width } = useWindowSize()
   const isMobile = width <= 767
 
@@ -27,6 +31,12 @@ export default function Sidebar({ chatRoomsLoading, chatRooms }) {
           </Link>
         )}
         <div className={cx('me-name')}>{me?.name}</div>
+        <div className={cx('new-chat')}>
+          <button onClick={() => setIsModalOpen(!isModalOpen)}>
+            <BsPencilSquare size={20} />
+          </button>
+          <Modal onClose={() => setIsModalOpen(false)}>{isModalOpen && <ExploreModal />}</Modal>
+        </div>
       </div>
       {!chatRoomsLoading && chatRooms?.length > 0 && (
         <>

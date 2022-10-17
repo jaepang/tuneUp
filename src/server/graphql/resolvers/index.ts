@@ -1,5 +1,6 @@
 export * from './test'
 export * from './authentication'
+export * from './user'
 export * from './showrequest'
 export * from './chat'
 export * from './chatroom'

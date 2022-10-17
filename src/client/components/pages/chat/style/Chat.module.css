@@ -61,6 +61,12 @@
           position: absolute;
           left: 20px;
         }
+        .new-chat {
+          width: 20px;
+          height: 20px;
+          position: absolute;
+          right: 20px;
+        }
       }
 
       .section {
