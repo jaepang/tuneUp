@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+import { USER_FRAGMENT } from '@client/shared/queries'
 
 export const USERS_BY_SEARCH_PARAM_QUERY = gql`
   query ($searchParam: String) {
@@ -6,6 +7,14 @@ export const USERS_BY_SEARCH_PARAM_QUERY = gql`
       id
       profileImg
       name
+    }
+  }
+`
+
+export const USER_INFO_QUERY = gql`
+  query ($userId: Int) {
+    userInfo(userId: $userId) {
+      ${USER_FRAGMENT}
     }
   }
 `

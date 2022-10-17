@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Modal from '@components/modal'
 import ExploreModal from './modal'
+import ProfileImg from '@components/profileImg'
 import { BsChevronLeft, BsPencilSquare } from 'react-icons/bs'
 
 import { useState } from 'react'
@@ -50,9 +51,7 @@ export default function Sidebar({ chatRoomsLoading, chatRooms }) {
                     active: chatRoom.id === chatRoomId,
                     unread,
                   })}>
-                  <div className={cx('profile-img-wrapper')}>
-                    <img className={cx('profile-img')} src={oppositeUser?.profileImg} />
-                  </div>
+                  <ProfileImg src={oppositeUser?.profileImg} size={40} />
                   <div className={cx('username')}>{oppositeUser?.name}</div>
                   {unread && <div className={cx('unread-dot')} />}
                 </div>

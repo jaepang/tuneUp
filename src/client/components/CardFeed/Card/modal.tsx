@@ -1,10 +1,12 @@
+import ProfileImg from '@components/profileImg'
+
 import { useRouter } from 'next/router'
 import { useAccount } from '@client/hooks'
 import { useMutation } from 'react-query'
 import { createChatRoomMutation } from '@client/shared/queries'
 
 import classNames from 'classnames/bind'
-import styles from '@components/CardFeed/style/CardFeed.module.css'
+import styles from '@components/cardFeed/style/CardFeed.module.css'
 const cx = classNames.bind(styles)
 
 export default function CardModal({ card }) {
@@ -31,9 +33,7 @@ export default function CardModal({ card }) {
   return (
     <div className={cx('modal')}>
       <div className={cx('header')}>
-        <div className={cx('img-wrapper')}>
-          <img className={cx('profile')} src={card?.profileImg} />
-        </div>
+        <ProfileImg src={card?.club?.profileImg} size={75} />
         <div className={cx('info')}>
           <div className={cx('club-name')}>{card?.club?.name}</div>
           <div className={cx('place')}>{card?.place}</div>

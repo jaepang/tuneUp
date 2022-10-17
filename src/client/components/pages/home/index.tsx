@@ -1,6 +1,6 @@
 import Row from '@components/layout/shared/row'
-import MainBanner from '@components/MainBanner'
-import CardFeed from '@components/CardFeed'
+import MainBanner from '@root/src/client/components/mainBanner'
+import CardFeed from '@root/src/client/components/cardFeed'
 
 import { useWindowSize } from '@client/hooks'
 import { useQuery } from 'react-query'

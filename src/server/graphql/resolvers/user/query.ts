@@ -22,5 +22,25 @@ export const UserQuery = extendType({
         })
       },
     })
+    t.field('userInfo', {
+      type: 'User',
+      args: {
+        userId: 'Int',
+      },
+      resolve: (_, { userId }, ctx) => {
+        return prisma.user.findUnique({
+          where: {
+            id: userId,
+          },
+          include: {
+            requests: {
+              where: {
+                available: true,
+              },
+            },
+          },
+        })
+      },
+    })
   },
 })

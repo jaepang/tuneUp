@@ -30,28 +30,8 @@
         flex-direction: column;
         text-align: left;
 
-        .img-wrapper {
-          width: 75px;
-          height: 75px;
-          margin-right: 10px;
-          margin-bottom: 25px;
-          display: flex;
-          align-items: center;
-          border-radius: 50%;
-          overflow: hidden;
-          background: radial-gradient(
-            100% 417.22% at 100% 0%,
-            #f76e11 0%,
-            #fbbe94 52.6%,
-            rgba(251, 190, 148, 0.49) 100%
-          );
-
-          .profile {
-            object-fit: cover;
-          }
-        }
-
         .club-name {
+          margin-top: 25px;
           font-size: 18px;
           font-weight: 600;
         }
@@ -110,22 +90,6 @@
     padding: 0 20px;
     display: flex;
     column-gap: 15px;
-
-    .img-wrapper {
-      height: 100px;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      overflow: hidden;
-      background: radial-gradient(100% 417.22% at 100% 0%, #f76e11 0%, #fbbe94 52.6%, rgba(251, 190, 148, 0.49) 100%);
-
-      @media (max-width: 500px) {
-        height: 75px;
-      }
-
-      .profile {
-        object-fit: cover;
-      }
-    }
 
     .info {
       width: 100%;
