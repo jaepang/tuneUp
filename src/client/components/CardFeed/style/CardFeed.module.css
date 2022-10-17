@@ -13,6 +13,7 @@
     flex-direction: column;
     justify-content: space-between;
     border-radius: 20px;
+    border: 1px solid var(--color-light-gray-border);
     background-color: var(--color-light);
     overflow: hidden;
     transition: all 150ms;
@@ -63,6 +64,7 @@
     }
 
     @media (min-width: 1025px) {
+      border: none;
       box-shadow: 10px 20px 20px 0 rgb(92 95 112 / 8%);
 
       &:hover {
