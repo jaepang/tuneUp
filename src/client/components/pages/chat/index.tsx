@@ -13,7 +13,7 @@ const cx = classNames.bind(styles)
 
 export default function ChatRoomsComponent() {
   const router = useRouter()
-  const { me } = useAccount()
+  const { isLoggedIn, me, isMeLoading } = useAccount()
   const chatRoomId = parseInt(router.query.roomId as string)
 
   const { width } = useWindowSize()
@@ -26,6 +26,10 @@ export default function ChatRoomsComponent() {
   })
   const chatRooms = chatRoomsData?.chatRooms
   const currentChatRoom = chatRooms?.find(chatRoom => chatRoom.id === chatRoomId)
+
+  if (!isMeLoading && !isLoggedIn) {
+    router.push('/login')
+  }
 
   return (
     <div className={cx('root')}>
