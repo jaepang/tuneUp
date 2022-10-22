@@ -15,6 +15,8 @@ export interface Context {
   userId: number
   authStatus: AUTH_STATUS
   prisma: PrismaClient
+  session: any
+  pubsub: any
 }
 
 export interface Token {

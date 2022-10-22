@@ -121,11 +121,15 @@ export const AuthenticationMutation = extendType({
     t.field('updateUser', {
       type: 'User',
       args: {
-        email: nonNull(stringArg()),
+        id: nonNull(intArg()),
+        email: stringArg(),
+        name: stringArg(),
+        profileImg: stringArg(),
+        school: stringArg(),
+        desc: stringArg(),
         password: stringArg(),
-        name: nonNull(stringArg()),
       },
-      resolve: async (_, { email, password, name }, ctx) => {
+      resolve: async (_, { id, email, name, profileImg, school, desc, password }, ctx) => {
         let hashedPassword = undefined
 
         if (password) {
@@ -134,10 +138,14 @@ export const AuthenticationMutation = extendType({
 
         return prisma.user.update({
           where: {
-            email,
+            id,
           },
           data: {
+            email,
             name,
+            profileImg,
+            school,
+            desc,
             password: hashedPassword,
           },
         })
@@ -164,6 +172,47 @@ export const AuthenticationMutation = extendType({
           return await sendPasswordRecoveryEmail(user)
         } catch (e: any) {
           throw new ApolloError(e)
+        }
+      },
+    })
+
+    t.field('changePassword', {
+      type: 'AuthPayload',
+      args: {
+        id: nonNull(intArg()),
+        password: nonNull(stringArg()),
+        newPassword: nonNull(stringArg()),
+      },
+      resolve: async (_, { id, password, newPassword }, ctx) => {
+        let user = null
+        try {
+          user = await prisma.user.findUnique({
+            where: {
+              id,
+            },
+          })
+        } catch (e) {
+          throw Error('invalid_user')
+        }
+
+        if (!user) {
+          throw Error('invalid_user')
+        }
+        const passwordValid = await compare(password, user.password)
+        if (!passwordValid) {
+          throw Error('invalid_password')
+        }
+        const hashedPassword = await hash(newPassword, 10)
+        user = await prisma.user.update({
+          where: { id },
+          data: {
+            password: hashedPassword,
+          },
+        })
+        const token = generateToken({ userId: user.id })
+        return {
+          token,
+          user,
         }
       },
     })

@@ -30,7 +30,9 @@
       margin: 0 auto 0 auto;
     }
 
-    .left-area {
+    .left-area .logo-wrapper {
+      height: 30px;
+      padding: 10px 0;
     }
 
     .right-area {

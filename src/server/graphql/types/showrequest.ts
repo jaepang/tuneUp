@@ -7,8 +7,9 @@ export const ShowRequest = objectType({
     t.boolean('available')
     t.date('createdAt')
     t.date('date')
-    t.string('desc')
     t.string('place')
+    t.string('desc')
+    t.int('budget')
 
     t.field('club', { type: 'User' })
   },

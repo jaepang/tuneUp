@@ -12,7 +12,7 @@ export const AuthenticationQuery = extendType({
             id: ctx.userId,
           },
           include: {
-            requests: true,
+            request: true,
           },
         })
       },

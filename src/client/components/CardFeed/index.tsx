@@ -1,4 +1,4 @@
-import Card from './Card'
+import Card from './card'
 
 import classNames from 'classnames/bind'
 import styles from './style/CardFeed.module.css'

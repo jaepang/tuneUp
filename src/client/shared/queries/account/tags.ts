@@ -30,3 +30,14 @@ export const SIGNUP_MUTATION = gql`
     }
   }
 `
+
+export const CHANGE_PASSWORD_MUTATION = gql`
+  mutation ($id: Int!, $password: String!, $newPassword: String!) {
+    changePassword(id: $id, password: $password, newPassword: $newPassword) {
+      token,
+      user {
+        ${USER_FRAGMENT}
+      }
+    }
+  }
+`

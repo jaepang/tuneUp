@@ -5,6 +5,7 @@ export const SHOWREQUEST_FRAGMENT = `
   date
   desc
   place
+  budget
   club {
     id
     email
@@ -20,7 +21,29 @@ export const USER_FRAGMENT = `
   name
   profileImg
   school
-  requests {
+  desc
+  request {
     ${SHOWREQUEST_FRAGMENT}
+  }
+`
+
+export const CHAT_FRAGMENT = `
+  id
+  createdAt
+  message
+  read
+  user {
+    ${USER_FRAGMENT}
+  }
+`
+
+export const CHATROOM_FRAGMENT = `
+  id
+  users {
+    ${USER_FRAGMENT}
+  }
+  chats {
+    id
+    read
   }
 `
