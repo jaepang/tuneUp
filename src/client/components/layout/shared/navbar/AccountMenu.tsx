@@ -24,10 +24,6 @@ export default function AccountMenu() {
               <IoChatbubblesOutline size={25} />
             </div>
           </Link>
-          <button>
-            {/** TODO: implement heart notice */}
-            <AiOutlineHeart size={25} />
-          </button>
           <Link href={PATHNAME.MY}>
             <div className={cx('icon-wrapper')}>
               <AiOutlineUser size={25} />
