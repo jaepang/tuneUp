@@ -1,4 +1,4 @@
-import CardFeed from '@root/src/client/components/cardFeed'
+import { BsClock, BsMap, BsCashCoin } from 'react-icons/bs'
 
 import { useQuery } from 'react-query'
 import { userInfoQuery } from '@client/shared/queries'
@@ -13,7 +13,6 @@ export default function OpositeUserInfo({ oppositeUserId }) {
     enabled: !!oppositeUserId,
   })
   const { userInfo: user } = data ?? {}
-  console.log(user)
 
   return (
     <>
@@ -29,7 +28,28 @@ export default function OpositeUserInfo({ oppositeUserId }) {
           </div>
           <div className={cx('body')}>
             <div className={cx('description')}>{user?.desc}</div>
-            {user?.requests && <CardFeed data={user?.requests} />}
+            {user?.request && user?.request.available ? (
+              <div className={cx('request')}>
+                <h2 className={cx('request-title')}>모집 중인 연합 공연</h2>
+                <div className={cx('head')}>
+                  <div className={cx('date')}>
+                    <BsClock size={15} />
+                    {user.request.date.slice(0, 10)}
+                  </div>
+                  <div className={cx('place')}>
+                    <BsMap size={15} />
+                    {user.request.place}
+                  </div>
+                  <div className={cx('budget')}>
+                    <BsCashCoin size={15} />
+                    예산: {user.request.budget}만원
+                  </div>
+                </div>
+                <div className={cx('desc')}>{user.request.desc}</div>
+              </div>
+            ) : (
+              <div className={cx('no-request')}>현재 모집 중인 연합 공연이 없습니다.</div>
+            )}
           </div>
         </div>
       )}

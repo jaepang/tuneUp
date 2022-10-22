@@ -9,12 +9,15 @@ export const ShowRequestQuery = extendType({
       args: {
         skip: intArg(),
         take: intArg(),
+        cursorId: intArg(),
       },
-      resolve: (_, { skip, take }, ctx) => {
+      resolve: (_, { skip, take, cursorId }, ctx) => {
         return prisma.showRequest.findMany({
           skip,
           take,
+          cursor: cursorId ? { id: cursorId } : undefined,
           where: {
+            available: true,
             NOT: {
               club: {
                 id: ctx.userId,
@@ -23,6 +26,19 @@ export const ShowRequestQuery = extendType({
           },
           include: {
             club: true,
+          },
+        })
+      },
+    })
+
+    t.field('myPageRequest', {
+      type: 'ShowRequest',
+      resolve: (_, {}, ctx) => {
+        return prisma.showRequest.findFirst({
+          where: {
+            club: {
+              id: ctx.userId,
+            },
           },
         })
       },

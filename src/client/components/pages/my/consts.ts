@@ -18,7 +18,7 @@ export const MYPAGE_LINKS = [
   },
   {
     label: '연합공연 정보',
-    pageName: 'showrequests',
+    pageName: 'showrequest',
     href: PATHNAME.MY_SHOWREQUESTS,
     icon: GiTheaterCurtains,
   },

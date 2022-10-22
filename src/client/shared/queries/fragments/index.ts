@@ -22,7 +22,7 @@ export const USER_FRAGMENT = `
   profileImg
   school
   desc
-  requests {
+  request {
     ${SHOWREQUEST_FRAGMENT}
   }
 `

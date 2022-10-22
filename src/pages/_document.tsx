@@ -16,6 +16,10 @@ export default function Document() {
           as="style"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard-dynamic-subset.css"
         />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/react-datepicker/2.14.1/react-datepicker.min.css"
+        />
         <meta charSet="UTF-8" />
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" />
         <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js" />

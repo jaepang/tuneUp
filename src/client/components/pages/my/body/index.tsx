@@ -1,5 +1,6 @@
 import InfoConfig from './info'
 import PasswordConfig from './password'
+import ShowRequestConfig from './request'
 
 import { useRouter } from 'next/router'
 
@@ -15,7 +16,7 @@ export default function MyPageBody() {
     <div className={cx('body')}>
       {page === 'info' && <InfoConfig />}
       {page === 'password' && <PasswordConfig />}
-      {/*page === 'requests' && <RequestsComponent />*/}
+      {page === 'showrequest' && <ShowRequestConfig />}
     </div>
   )
 }

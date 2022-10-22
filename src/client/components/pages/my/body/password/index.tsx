@@ -55,7 +55,7 @@ export default function PasswordConfig() {
   }
 
   return (
-    <div className={cx('info-body')}>
+    <div className={cx('config-body')}>
       <div className={cx('input-wrapper')}>
         <div className={cx('input-label')}>기존 비밀번호</div>
         <input type="password" name="password" value={formState.password} onChange={changeFormState} />
@@ -68,7 +68,9 @@ export default function PasswordConfig() {
         <div className={cx('input-label')}>새 비밀번호 재입력</div>
         <input type="password" value={newPasswordConfirm} onChange={e => setNewPasswordConfirm(e.target.value)} />
       </div>
-      <button onClick={handleSubmit}>제출</button>
+      <button className={cx('button')} onClick={handleSubmit}>
+        제출
+      </button>
     </div>
   )
 }

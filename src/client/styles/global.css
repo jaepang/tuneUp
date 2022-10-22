@@ -20,3 +20,13 @@ a {
 #__next {
   height: 100%;
 }
+
+.react-datepicker {
+  font-size: 14px;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.react-datepicker__current-month {
+  font-size: 16px;
+  font-weight: 600;
+}

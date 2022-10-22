@@ -33,11 +33,7 @@ export const UserQuery = extendType({
             id: userId,
           },
           include: {
-            requests: {
-              where: {
-                available: true,
-              },
-            },
+            request: true,
           },
         })
       },

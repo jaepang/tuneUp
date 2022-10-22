@@ -16,7 +16,7 @@ model User {
   school      String  @default("")
   desc        String?
 
-  requests    ShowRequest[]
+  request     ShowRequest?
   chatrooms   ChatRoom[]
   chats       Chat[]
 }
@@ -24,7 +24,7 @@ model User {
 model ShowRequest {
   id        Int      @default(autoincrement()) @id
   available Boolean  @default(true)
-  clubId    Int
+  clubId    Int      @unique
   club      User     @relation(fields: [clubId], references: [id])
   createdAt DateTime @default(now())
   date      DateTime

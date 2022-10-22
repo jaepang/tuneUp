@@ -47,7 +47,7 @@ export default function InfoConfig() {
   }
 
   return (
-    <div className={cx('info-body')}>
+    <div className={cx('config-body')}>
       <ProgileImg src={me?.profileImg} size={60} />
       <div className={cx('input-wrapper')}>
         <div className={cx('input-label')}>동아리 명</div>
@@ -65,7 +65,9 @@ export default function InfoConfig() {
         <div className={cx('input-label')}>이메일</div>
         <input type="email" name="email" value={formState.email} onChange={changeFormState} />
       </div>
-      <button onClick={() => mutate(formState)}>제출</button>
+      <button className={cx('button')} onClick={() => mutate(formState)}>
+        제출
+      </button>
     </div>
   )
 }
