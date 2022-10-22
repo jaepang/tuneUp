@@ -1,4 +1,7 @@
 node_modules/
 src/shared/generated/
 .next/
+**/public/workbox-*.js
+**/public/sw.js
+**/public/worker-*.js
 .DS_Store
