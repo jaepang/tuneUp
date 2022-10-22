@@ -4,7 +4,9 @@ const cx = classNames.bind(styles)
 
 export default function ProgileImg({ src, size = 40 }) {
   return (
-    <div style={{ minWidth: `${size}px`, minHeight: `${size}px` }} className={cx('profile-img-wrapper')}>
+    <div
+      style={{ minWidth: `${size}px`, minHeight: `${size}px`, maxWidth: `${size}px`, maxHeight: `${size}px` }}
+      className={cx('profile-img-wrapper')}>
       <img className={cx('profile-img')} src={src} />
     </div>
   )

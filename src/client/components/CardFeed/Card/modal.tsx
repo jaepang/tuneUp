@@ -1,4 +1,5 @@
 import ProfileImg from '@components/profileImg'
+import { BsClock, BsMap, BsCashCoin } from 'react-icons/bs'
 
 import { useRouter } from 'next/router'
 import { useAccount } from '@client/hooks'
@@ -36,8 +37,18 @@ export default function CardModal({ card }) {
         <ProfileImg src={card?.club?.profileImg} size={75} />
         <div className={cx('info')}>
           <div className={cx('club-name')}>{card?.club?.name}</div>
-          <div className={cx('place')}>{card?.place}</div>
-          <div className={cx('date')}>희망 공연 날짜: {card?.date.slice(0, 10)}</div>
+          <div className={cx('item')}>
+            <BsMap size={15} />
+            {card?.place}
+          </div>
+          <div className={cx('item')}>
+            <BsClock size={15} />
+            {card?.date.slice(0, 10)}
+          </div>
+          <div className={cx('item')}>
+            <BsCashCoin size={15} />
+            예산: {card?.budget}만원
+          </div>
         </div>
       </div>
       <div className={cx('description')}>{card?.desc}</div>

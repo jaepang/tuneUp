@@ -23,6 +23,7 @@ export default function Card({ card }) {
       <div className={cx('description')}>{card?.desc}</div>
       <div className={cx('footer')}>
         <div className={cx('date')}>희망 공연 날짜: {card?.date.slice(0, 10)}</div>
+        <div className={cx('budget')}>예산: {card?.budget}만원</div>
       </div>
       <Modal onClose={() => setIsModalOpen(false)}>{isModalOpen && <CardModal {...{ card }} />}</Modal>
     </div>
