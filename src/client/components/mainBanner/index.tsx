@@ -1,7 +1,7 @@
 import { useWindowSize } from '@client/hooks'
 
 import classNames from 'classnames/bind'
-import styles from '@components/MainBanner/style/MainBanner.module.css'
+import styles from './style/MainBanner.module.css'
 const cx = classNames.bind(styles)
 
 export default function MainBanner() {

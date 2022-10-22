@@ -4,7 +4,7 @@ import CardFeed from '@root/src/client/components/cardFeed'
 
 import { useRef } from 'react'
 import { useWindowSize, useObserver } from '@client/hooks'
-import { useQuery, useInfiniteQuery } from 'react-query'
+import { useInfiniteQuery } from 'react-query'
 import { requestFeedQuery } from '@client/shared/queries'
 
 const PAGE_SIZE = 10
