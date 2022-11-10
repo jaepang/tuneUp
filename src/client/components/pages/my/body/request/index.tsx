@@ -1,8 +1,11 @@
+import Link from 'next/link'
 import ReactDatePicker from 'react-datepicker'
+import { BsChevronLeft } from 'react-icons/bs'
 import { kdayjs } from '@shared/utils'
 import { ko } from 'date-fns/locale'
 
 import { useState, useEffect } from 'react'
+import { useWindowSize } from '@client/hooks'
 import { useQuery, useMutation } from 'react-query'
 import {
   myPageRequestQuery,
@@ -17,6 +20,8 @@ const cx = classNames.bind(styles)
 export default function ShowRequestConfig() {
   const { data, refetch } = useQuery('myPageRequest', myPageRequestQuery)
   const request = data?.myPageRequest
+  const { width } = useWindowSize()
+  const isMobile = width <= 767
 
   const [formState, setFormState] = useState({
     id: request?.id,
@@ -79,9 +84,18 @@ export default function ShowRequestConfig() {
 
   return (
     <div className={cx('config-body')}>
-      <div className={cx('header')}>
+      {isMobile ? (
+        <div className={cx('header')}>
+          <Link href="/my/">
+            <button className={cx('back-button')}>
+              <BsChevronLeft size={20} />
+            </button>
+          </Link>
+          <div>연합공연 정보 수정</div>
+        </div>
+      ) : (
         <h1>연합공연 정보 수정</h1>
-      </div>
+      )}
       <div className={cx('input-wrapper')}>
         <div className={cx('input-label')}>노출</div>
         <input

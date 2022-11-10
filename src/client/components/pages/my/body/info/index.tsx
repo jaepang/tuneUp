@@ -1,7 +1,9 @@
-import ProgileImg from '@components/profileImg'
+import Link from 'next/link'
+import ProfileImg from '@components/profileImg'
+import { BsChevronLeft } from 'react-icons/bs'
 
 import { useState, useEffect } from 'react'
-import { useAccount } from '@client/hooks'
+import { useAccount, useWindowSize } from '@client/hooks'
 import { useMutation } from 'react-query'
 import { updateUserMutation } from '@client/shared/queries'
 
@@ -19,6 +21,8 @@ export default function InfoConfig() {
     email: me?.email,
     desc: me?.desc,
   })
+  const { width } = useWindowSize()
+  const isMobile = width <= 767
 
   useEffect(() => {
     setFormState({
@@ -48,7 +52,17 @@ export default function InfoConfig() {
 
   return (
     <div className={cx('config-body')}>
-      <ProgileImg src={me?.profileImg} size={60} />
+      {isMobile && (
+        <div className={cx('header')}>
+          <Link href="/my/">
+            <button className={cx('back-button')}>
+              <BsChevronLeft size={20} />
+            </button>
+          </Link>
+          <div className={cx('username')}>{me?.name}</div>
+        </div>
+      )}
+      <ProfileImg src={me?.profileImg} size={60} />
       <div className={cx('input-wrapper')}>
         <div className={cx('input-label')}>동아리 명</div>
         <input type="text" name="name" value={formState.name} onChange={changeFormState} />

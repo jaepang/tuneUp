@@ -1,5 +1,8 @@
+import Link from 'next/link'
+import { BsChevronLeft } from 'react-icons/bs'
+
 import { useState, useEffect } from 'react'
-import { useAccount } from '@root/src/client/hooks'
+import { useAccount, useWindowSize } from '@root/src/client/hooks'
 import { useMutation } from 'react-query'
 import { changePasswordMutation } from '@client/shared/queries'
 
@@ -15,6 +18,8 @@ export default function PasswordConfig() {
     newPassword: '',
   })
   const [newPasswordConfirm, setNewPasswordConfirm] = useState('')
+  const { width } = useWindowSize()
+  const isMobile = width <= 767
 
   useEffect(() => {
     setFormState(prev => ({
@@ -56,6 +61,16 @@ export default function PasswordConfig() {
 
   return (
     <div className={cx('config-body')}>
+      {isMobile && (
+        <div className={cx('header')}>
+          <Link href="/my/">
+            <button className={cx('back-button')}>
+              <BsChevronLeft size={20} />
+            </button>
+          </Link>
+          <div className={cx('username')}>{me?.name}</div>
+        </div>
+      )}
       <div className={cx('input-wrapper')}>
         <div className={cx('input-label')}>기존 비밀번호</div>
         <input type="password" name="password" value={formState.password} onChange={changeFormState} />
