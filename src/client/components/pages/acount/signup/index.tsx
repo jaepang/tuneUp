@@ -85,11 +85,6 @@ export default function SignupPageComponent() {
       isValid = false
     }
 
-    if (!REG_EXP.name.test(formState.name)) {
-      curFormErrorState.name = '올바른 이름을 입력해주세요.'
-      isValid = false
-    }
-
     setFormErrorState({
       ...curFormErrorState,
     })
