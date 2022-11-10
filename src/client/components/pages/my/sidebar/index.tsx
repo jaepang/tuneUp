@@ -17,7 +17,7 @@ export default function MyPageSidebar() {
 
   return (
     <div className={cx('sidebar')}>
-      <div className={cx('header')}>
+      <div className={cx('header', 'sidebar-header')}>
         {isMobile && (
           <Link href="/">
             <button className={cx('back-button')}>
